@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app
+spec:
+  containers:
+
+    - name: server
+      image: server:1.0
+
+    - name: client
+      image: curlimages/curl:7.76.0
+      command: ["/bin/sh"]
+      args: [ "-c", "while true; do curl -s http://localhost:8080/date;sleep 2;done" ]      

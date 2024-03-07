@@ -1,0 +1,23 @@
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingWebhookConfiguration
+metadata:
+  name: validating-webhook
+webhooks:
+  - name: test.example.com
+    failurePolicy: Fail
+    clientConfig:
+      service:
+        name: admission-controller
+        namespace: default
+        path: /validate/deployments
+        port: 8001
+      # Указано упрощённое значение для caBundle
+      caBundle: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURFekNDQWZ1Z0F3SUJBZ0lVYkdvWTlxQm5QUmZRWlVyT0w1T3EvSlJVZHlNd0RRWUpLb1pJaHZjTkFRRUwKQlFBd0t6RXBNQ2NHQTFVRUF3d2dZV1J0YVhOemFXOXVMV052Ym5SeWIyeHNaWEl1WkdWbVlYVnNkQzV6ZG1NdwpIaGNOTWpRd016QTJNVFV4T1RNd1doY05NalV3TXpBMk1UVXhPVE13V2pBck1Ta3dKd1lEVlFRRERDQmhaRzFwCmMzTnBiMjR0WTI5dWRISnZiR3hsY2k1a1pXWmhkV3gwTG5OMll6Q0NBU0l3RFFZSktvWklodmNOQVFFQkJRQUQKZ2dFUEFEQ0NBUW9DZ2dFQkFLaTFkdjlvUVM5UGxqYjdNbFEyTElVYWVGY3dvTXNPekdsL1E3MnM5SnZDVnlaZgorUDJvYU1NYVVsOGFLWkw0M1VnZkN4ejlDc1pIR1lMaDZidXJyU05GSVpCS1BRVEpGNjZWM1VjbGl2dDJwRXRHCkl4NGZvWEF4THFERzRDZ2ZsWmx5a0NaS1NvZjVFODBaUC9CUy9xOE9XcDh1V3lXa28zS1lqdUhyaXk1WlU5WXAKc0dQOEUzZ0QrcDhBZWxWZTVCV3ZKUWdWRk1CdDZCaDJheHVXNlZBeVI0MnJ6NjcxcFFpaXYxMmZteHJNVGVKeAowbTM3Nmg2MURDOXkvNjVuS3RYMjdITnN1M2hJbkNmbU1LYUY5UC9xMkl1VlQwSmVRc2gxNVZML2NHa1A1Zm12CnJsMkJKQnJVSEUxY0RsbUdRUW9YeTAvL1dOWWhsRjg1MXUvdHpGRUNBd0VBQWFNdk1DMHdLd1lEVlIwUkJDUXcKSW9JZ1lXUnRhWE56YVc5dUxXTnZiblJ5YjJ4c1pYSXVaR1ZtWVhWc2RDNXpkbU13RFFZSktvWklodmNOQVFFTApCUUFEZ2dFQkFGU3MyY3dSYko4S0t2K200dGJTV2hsQTVzOCthT1BJckZzSWwwc1YyTFF3WmRqOXUya2prYzlOCktDU0FZRVdHTVBLRmpaQm5vV3c1dG45bjZlT05nOFBRREhLMUtwU1I5ZXlWNU5XaDFlR2ZUOEE0dFdkYjdic3IKQndkeFZ6bkRwaldHYS9mL0FSRXpXUE4zZXZSUzU5amNLc0FOVGh6KzlLdm0xVTdnUjlVWmp5SjYyVnlGMW13cgp3RWhFVHZyOXVyQ09MOHJwV0ZYYXZGVnFSSStteitBbFZDVnVOdFlST0o2SEc4YnpWa2pHQUdNL0JGcCtNRUppCmVQL3k4bnBnT1VKcEprMEhmNXJ1WlljUjR0ZEhKdHFUeXVWWjdOa3hIV2xMRXdKMnkvZDJMSHZlcjJsODJqL0MKOHZLVFBrU0hVdzgxMWg4TGFQZlk5bkxjb3E4OW1CQT0KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=
+    admissionReviewVersions: ["v1", "v1beta1"]
+    sideEffects: None
+    rules:
+      - apiGroups:   ["apps"]
+        apiVersions: ["v1"]
+        operations:  ["CREATE", "UPDATE"]
+        resources:   ["deployments"]
+        scope:       "Namespaced"

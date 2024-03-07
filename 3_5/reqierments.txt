@@ -1,0 +1,5 @@
+Flask
+Jsonify
+
+
+Этот файл содержит определение трех Kubernetes объектов для настройки разрешений доступа: ServiceAccount для аутентификации, ClusterRole для определения разрешений на уровне кластера, и ClusterRoleBinding для связывания ServiceAccount с ClusterRole. 

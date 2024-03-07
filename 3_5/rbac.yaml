@@ -1,0 +1,46 @@
+# Определяет версию API для создания ServiceAccount
+apiVersion: v1
+# Указывает тип объекта, в данном случае ServiceAccount для доступа к API Kubernetes от имени подов
+kind: ServiceAccount
+metadata:
+  # Имя ServiceAccount, используемое для идентификации
+  name: admission-python
+---
+# Определяет версию API для создания ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+# Указывает тип объекта, в данном случае ClusterRole для определения разрешений на уровне кластера
+kind: ClusterRole
+metadata:
+  # Имя ClusterRole, используемое для идентификации
+  name: node-pod-reader
+rules:
+- # Правила для доступа к узлам, их статусам и метрикам
+  apiGroups: [""]
+  resources: ["nodes", "nodes/status", "nodes/metrics"]
+  verbs: ["get", "list", "watch"]
+- # Правила для доступа к подам
+  apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["get", "watch", "list"]
+---
+# Определяет версию API для создания ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+# Указывает тип объекта, в данном случае ClusterRoleBinding для связывания ClusterRole с субъектами
+kind: ClusterRoleBinding
+metadata:
+  # Имя ClusterRoleBinding, используемое для идентификации
+  name: get-nodes
+subjects:
+- # Определяет субъекты, к которым будет применяться роль
+  kind: ServiceAccount
+  # Указывает имя ServiceAccount, чувствительно к регистру
+  name: admission-python
+  # Пространство имен, в котором создан ServiceAccount
+  namespace: default
+roleRef:
+  # Указывает тип связываемой роли, в данном случае ClusterRole
+  kind: ClusterRole
+  # Имя ClusterRole, к которой привязывается субъект
+  name: node-pod-reader
+  # Группа API, к которой принадлежит роль
+  apiGroup: rbac.authorization.k8s.io
