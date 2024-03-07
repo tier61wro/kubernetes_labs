@@ -11,31 +11,3 @@ def index():
 
 if __name__ == '__main__':
     app.run(debug=False, host='0.0.0.0', port='8080')
-    
-    
-    видос в котором чувак говорит без чего нельзя учить кубер
-
-https://www.youtube.com/watch?v=wXuSqFJVNQA
-
-Видосы на компе лежат вот тут
-
-/home/tier/MY_personal_big/4_Kubernetes_kurs
-
-в телеграмме
-
-https://t.me/+zooSt2K8U5VlZWE8
-
-## Программа курса
-
-1. Интро
-2. Знакомство с Kubernetes: основные понятия и архитектура
-3. Основные объекты Kubernetes
-4. Безопасность и управление доступом
-5. Сетевая подсистема Kubernetes
-6. Хранение данных в Kubernetes
-7. Шаблоны: Helm и его аналоги (Jsonnet, Kustomize)
-8. Requests, Limits и Load Balancing в кластере
-9. Мониторинг компонентов кластера и приложений, работающих в нем
-10. Service mesh. Знакомство с Istio и Envoy
-11. Kubernetes для непрерывной поставки. Интеграция с CI-сервисом
-12. Эксплуатация кластера

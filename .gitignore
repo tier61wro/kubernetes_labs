@@ -33,3 +33,6 @@ __pycache__/
 
 # cert keys
 *.key
+
+# my files
+TIPS
