@@ -31,3 +31,5 @@ venv/
 # Python byte-compiled files
 __pycache__/
 
+# cert keys
+*.key
