@@ -1,0 +1,14 @@
+# my example of pod to show psa working
+apiVersion: v1
+kind: Pod
+metadata:
+  name: python-restricted-example
+  namespace: default
+spec:
+  containers:
+  - name: python-container
+    image: python:3.9-alpine
+    securityContext:
+      runAsNonRoot: true
+      runAsUser: 1000  # UID непривилегированного пользователя
+    command: ["python", "-c", "import time; time.sleep(3600)"]

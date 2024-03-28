@@ -1,0 +1,8 @@
+# my example of PSA
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: default
+  labels:
+    # Применить уровень безопасности 'Restricted' для всех подов в namespace
+    pod-security.kubernetes.io/warn: "restricted"
