@@ -1,0 +1,97 @@
+# output of
+# k describe daemonset kube-flannel-ds -n kube-flannel
+
+Name:           kube-flannel-ds
+Selector:       app=flannel
+Node-Selector:  <none>
+Labels:         app=flannel
+                k8s-app=flannel
+                tier=node
+Annotations:    deprecated.daemonset.template.generation: 1
+Desired Number of Nodes Scheduled: 3
+Current Number of Nodes Scheduled: 3
+Number of Nodes Scheduled with Up-to-date Pods: 3
+Number of Nodes Scheduled with Available Pods: 3
+Number of Nodes Misscheduled: 0
+Pods Status:  3 Running / 0 Waiting / 0 Succeeded / 0 Failed
+Pod Template:
+  Labels:           app=flannel
+                    tier=node
+  Service Account:  flannel
+  Init Containers:
+   install-cni-plugin:
+    Image:      docker.io/flannel/flannel-cni-plugin:v1.2.0
+    Port:       <none>
+    Host Port:  <none>
+    Command:
+      cp
+    Args:
+      -f
+      /flannel
+      /opt/cni/bin/flannel
+    Environment:  <none>
+    Mounts:
+      /opt/cni/bin from cni-plugin (rw)
+   install-cni:
+    Image:      docker.io/flannel/flannel:v0.22.3
+    Port:       <none>
+    Host Port:  <none>
+    Command:
+      cp
+    Args:
+      -f
+      /etc/kube-flannel/cni-conf.json
+      /etc/cni/net.d/10-flannel.conflist
+    Environment:  <none>
+    Mounts:
+      /etc/cni/net.d from cni (rw)
+      /etc/kube-flannel/ from flannel-cfg (rw)
+  Containers:
+   kube-flannel:
+    Image:      docker.io/flannel/flannel:v0.22.3
+    Port:       <none>
+    Host Port:  <none>
+    Command:
+      /opt/bin/flanneld
+    Args:
+      --ip-masq
+      --kube-subnet-mgr
+    Requests:
+      cpu:     100m
+      memory:  50Mi
+    Environment:
+      POD_NAME:            (v1:metadata.name)
+      POD_NAMESPACE:       (v1:metadata.namespace)
+      EVENT_QUEUE_DEPTH:  5000
+    Mounts:
+      /etc/kube-flannel/ from flannel-cfg (rw)
+      /run/flannel from run (rw)
+      /run/xtables.lock from xtables-lock (rw)
+  Volumes:
+   run:
+    Type:          HostPath (bare host directory volume)
+    Path:          /run/flannel
+    HostPathType:  
+   cni-plugin:
+    Type:          HostPath (bare host directory volume)
+    Path:          /opt/cni/bin
+    HostPathType:  
+   cni:
+    Type:          HostPath (bare host directory volume)
+    Path:          /etc/cni/net.d
+    HostPathType:  
+   flannel-cfg:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      kube-flannel-cfg
+    Optional:  false
+   xtables-lock:
+    Type:               HostPath (bare host directory volume)
+    Path:               /run/xtables.lock
+    HostPathType:       FileOrCreate
+  Priority Class Name:  system-node-critical
+Events:
+  Type    Reason            Age   From                  Message
+  ----    ------            ----  ----                  -------
+  Normal  SuccessfulCreate  10m   daemonset-controller  Created pod: kube-flannel-ds-jftg4
+  Normal  SuccessfulCreate  10m   daemonset-controller  Created pod: kube-flannel-ds-r9ckl
+  Normal  SuccessfulCreate  10m   daemonset-controller  Created pod: kube-flannel-ds-588hq
