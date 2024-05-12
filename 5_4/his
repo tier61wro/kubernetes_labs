@@ -1,0 +1,1000 @@
+   31  k get services
+   32  k delete -f  deployment.yaml 
+   33  k get services
+   34  k delete service  nginx-deployment
+   35  k get services
+   36  k create -f  deployment.yaml 
+   37  k get services
+   38  k expose deployment nginx-deployment --port 80 --target-port 80
+   39  k get services
+   40  k describe service nginx-deployment
+   41  kgp -o wide
+   42  k get endpoints
+   43  k describe endpoints
+   44  k describe endpoints nginx-deployment
+   45  k run tmp-pod --rm -i -tty --image nicolaka/netshoot --/bin/bash
+   46  k run tmp-pod --rm -i --tty --image nicolaka/netshoot --/bin/bash
+   47  k run tmp-pod --rm -i --tty --image nicolaka/netshoot -- /bin/bash
+   48  k delete service  nginx-deployment
+   49  k create -f  deployment.yaml 
+   50  k get services
+   51  kgd
+   52  k expose deployment nginx-deployment --port 80 --target-port 80
+   53  kgs
+   54  k describe service nginx-deployment
+   55  k run tmp-pod --rm -i --tty --image nicolaka/netshoot -- /bin/bash
+   56  k describe service nginx-deployment
+   57  k describe endpoints nginx-deployment
+   58  g get nodes
+   59  k get nodes
+   60  k describe minicube
+   61  k describe minikube
+   62  k describe node  minikube
+   63  k describe node  minikube | grep -C 2 dns
+   64  k describe node  minikube | grep --colot -C 2 dns
+   65  k describe node  minikube | grep --color -C 2 dns
+   66  k get namespaces
+   67  k get all --namespace kube-system
+   68  k run tmp-pod --rm -i --tty --image nicolaka/netshoot -- /bin/bash
+   69  k get pods
+   70  k get jobs
+   71  k get deployment
+   72  k delet deployment nginx-deployment
+   73  k delete deployment nginx-deployment
+   74  k logs 
+   75  ls
+   76  cd 3_4
+   77  cd ../3_4
+   78  ls -altr
+   79  k create job.yaml 
+   80  k create -f job.yaml 
+   81  kgp
+   82  kgj
+   83  k get jobs
+   84  kgp
+   85  k log pi-7qwf2
+   86  k logs pi-7qwf2
+   87  klogf
+   88  klogf pi
+   89  kgp
+   90  klogf pi
+   91  k get jobs
+   92  kgp
+   93  #k create -f cronjob.yaml 
+   94  k delete job.yaml 
+   95  k delete -f  job.yaml 
+   96  kgp
+   97  k create -f cronjob.yaml 
+   98  kgp
+   99  k get cronjobs
+  100  k delete -f cronjob.yaml 
+  101  k create -f job.yaml 
+  102  kgp
+  103  k delete job.yaml 
+  104  k delete -f  job.yaml 
+  105  k create -f job.yaml 
+  106  kgp
+  107  klogf pi
+  108  k delete -f  job.yaml 
+  109  k create -f job.yaml 
+  110  kgp
+  111  klogf pi
+  112  kgp
+  113  k delete -f  job.yaml 
+  114  k create -f job.yaml 
+  115  kgp
+  116  k delete -f  job.yaml 
+  117  k create -f job.yaml 
+  118  kgp
+  119  watch -n 2 kgp
+  120  watch -n 2 kubctl get pods
+  121  watch -n 2 kubectl get pods
+  122  watch -n 1 kubectl get pods
+  123  watch -n 1 kgp
+  124  лпз
+  125  kgp
+  126  k delete -f  job.yaml 
+  127  k create -f cronjob.yaml 
+  128  kgp
+  129  k create -f cronjob.yaml 
+  130  k get cronjob
+  131  wathc kubectl get cronjob
+  132  watch kubectl get cronjob
+  133  kgp
+  134  k delete -f  cronjob.yaml 
+  135  k get cronjob
+  136  k create -f cronjob.yaml 
+  137  k get cronjob
+  138  kgp
+  139  klogf h
+  140  klogf hello
+  141  watch kubectl get cronjob
+  142  watch kubectl get pods
+  143  k delete -f  cronjob.yaml 
+  144  kgp
+  145  ls -altr
+  146  create -f  init.yaml 
+  147  k create -f  init.yaml 
+  148  kgp
+  149  klog myapp-pod
+  150  k logs  myapp-pod -c init-db
+  151  kgp
+  152  k get events --field-selector involvedObject=myapp-pod
+  153  k get event --field-selector involvedObject=myapp-pod
+  154  k get event --field-selector involvedObject.name=myapp-pod
+  155  watch k get event --field-selector involvedObject.name=myapp-pod
+  156  watch kubectl get event --field-selector involvedObject.name=myapp-pod
+  157  k delete kubectl
+  158  kgp
+  159  k delete -f  init.yaml 
+  160  k create -f  init.yaml 
+  161  kgp
+  162  watch k get event --field-selector involvedObject.name=myapp-pod
+  163  watch kubectl get event --field-selector involvedObject.name=myapp-pod
+  164  k delete -f  init.yaml 
+  165  kgp
+  166  k delete myapp-pod
+  167  watch k get event --field-selector involvedObject.name=myapp-pod
+  168  watch kubectl get event --field-selector involvedObject.name=myapp-pod
+  169  k create -f  init.yaml 
+  170  watch k get event --field-selector involvedObject.name=myapp-pod
+  171  watch kubectl get event --field-selector involvedObject.name=myapp-pod
+  172  k delete myapp-pod
+  173  k delete -f  init.yaml 
+  174  k create -f  init.yaml 
+  175  kgp
+  176  k delete myapp-pod
+  177  k delete pod  myapp-pod
+  178  kgp
+  179  k create -f  init.yaml 
+  180  kgp
+  181  watch kubectl get event --field-selector involvedObject.name=myapp-pod
+  182  k delete -f  init.yaml 
+  183  k create -f  init.yaml 
+  184  watch kubectl get event --field-selector involvedObject.name=myapp-pod
+  185  kgp
+  186  klogf  myapp
+  187  k logs  myapp-pod
+  188  k logs  myapp-pod -c init-db
+  189  watch kubectl get event --field-selector involvedObject.name=myapp-pod
+  190  watch kubectl get event --field-selector involvedObject.name=myapp-pod --watch
+  191  kubectl get event --field-selector involvedObject.name=myapp-pod --watch
+  192  k delete -f  init.yaml 
+  193  k logs  myapp-pod -c init-db
+  194  cd ..
+  195  mkdir 3_5
+  196  cd 3_5
+  197  touch FROM python:3.8-slim-buster
+  198  WORKDIR /app
+  199  COPY requirements.txt requirements.txt
+  200  RUN pip3 install -r requirements.txt
+  201  COPY . .
+  202  CMD ["python3", "app.py"]
+  203  touch Dockerfile
+  204  ls -latr
+  205  #openssl req -x509 -newkey rsa:4096 -keyout tls.key -out tls.crt -days 365 -nodes -subj "/CN=localhost"
+  206  openssl req -x509 -newkey rsa:4096 -keyout tls.key -out tls.crt -days 365 -nodes -subj "/CN=localhost"
+  207  ls
+  208  ls -latr
+  209  mkdir certs
+  210  mv tls.key server.key
+  211  mv tls.crt server.crt
+  212  ls
+  213  mv  server.* certs/
+  214  ls -altr
+  215  touch app.py
+  216  #pip install -r re
+  217  gedit reqierments.txt
+  218  avenv
+  219  vvenv
+  220  avenv
+  221  pip install -r requirments.txt
+  222  ls
+  223  pip install -r requirments.txt
+  224  ls 
+  225  mv reqierments.txt requirments.txt
+  226  pip install -r requirments.txt
+  227  ls
+  228  mkdir app
+  229  ls 
+  230  cp certs/*   app
+  231  mv requirments.txt Dockerfile app
+  232  ls -altr
+  233  cd app/
+  234  ls -latr
+  235  cd ..
+  236  ls -altr
+  237  mv app.py app
+  238  cd app/
+  239  docker build -t webhook:v1 .
+  240  ls -altr
+  241  mv requirments.txt requirements.txt
+  242  docker build -t webhook:v1 .
+  243  docker images -a | grep web
+  244  cd ..
+  245  ls -latr
+  246  touch rbac.yaml
+  247  k create -f rbac.yaml 
+  248  touch deployment.yaml
+  249  k create -f  deployment.yaml 
+  250  kgd
+  251  gedit service.yaml
+  252  k create -f  service.yaml 
+  253  ls -altr
+  254  touch webhook.yaml
+  255  cat certs/server.crt 
+  256  touch deployment_test.yaml
+  257  ls a-ltr
+  258  ls -altr
+  259  cat  certs/server.crt | base64 | tr -d '\n'
+  260  kgp
+  261  k log python-admission-f69f5b58f-p9gzc
+  262  k logs python-admission-f69f5b58f-p9gzc
+  263  kgp
+  264  #k delete 
+  265  kgd 
+  266  k delete  deployment python-admission
+  267  gdp
+  268  kgp
+  269  kgd
+  270  k create -f  deployment.yaml 
+  271  kgs
+  272  kgd
+  273  kgp
+  274  klogf python
+  275  docker images -a | grep web
+  276  docker rm webhook
+  277  docker image  rm webhook
+  278  docker image  rm webhook:v1
+  279  docker build -t webhook:v1 .
+  280  ls -altr
+  281  cp app/Dockerfile .
+  282  docker build -t webhook:v1 .
+  283  ls -altr
+  284  cp app/requirements.txt .
+  285  cd app/
+  286  ls -altr
+  287  rm requirements.txt requirements.txt Dockerfile 
+  288  ls
+  289  rm  requirements.txt Dockerfile 
+  290  ls
+  291  cd ..
+  292  ls 
+  293  docker build -t webhook:v1 .
+  294  ls
+  295  cat Dockerfile 
+  296  k create -f  deployment.yaml 
+  297  kgd
+  298  k delete deployment python-admission
+  299  k create -f  deployment.yaml 
+  300  kgf
+  301  kgd
+  302  klogf python
+  303  ls -altr
+  304  mv requirements.txt Dockerfile app/
+  305  cd app/
+  306  docker build -t webhook:v1 .
+  307  kgd
+  308  ls -altr
+  309  kgd
+  310  k delete deployment python-admission
+  311  k create -f  deployment.yaml 
+  312  cd ..
+  313  k create -f  deployment.yaml 
+  314  gs
+  315  kgd
+  316  klogf python
+  317  ls -latr
+  318  k create -f deployment_test.yaml 
+  319  kgd
+  320  #k create -f rbac.yaml 
+  321  kubectl get ServiceAccount
+  322  kubectl get ClusterRole
+  323  kubectl get ClusterRole | grep admiss
+  324  kubectl get ClusterRole | grep reader
+  325  kubectl get ServiceAccount | grep adm
+  326  kubectl describe clusterrole node-pod-reader
+  327  kubectl describe clusterrolebinding get-nodes
+  328  kubectl get ValidatingWebhookConfiguration
+  329  kgd 
+  330  k delete govno-deployment
+  331  k delete deployment govno-deployment
+  332  kgd 
+  333  k create -f webhook.yaml 
+  334  cat  certs/server.crt | base64 | tr -d '\n'
+  335  k create -f webhook.yaml 
+  336  kgd
+  337  k create -f deployment_test.yaml 
+  338  history | grep create
+  339  grep -rin "webhook:v1" *
+  340  rm -rf certs/*
+  341  # openssl req -x509 -newkey rsa:4096 -keyout tls.key -out tls.crt -days 365 -nodes -subj "/CN=admission-controller.default.svc"
+  342  openssl req -x509 -newkey rsa:4096 -keyout tls.key -out tls.crt -days 365 -nodes -subj "/CN=admission-controller.default.svc"
+  343  ls -altr
+  344  cp  tls.* certs/
+  345  mv   tls.* app/
+  346  ls -altr
+  347  cd app/
+  348  docker build -t webhook:v1 .
+  349  cd ..
+  350  cat  certs/tls.crt | base64 | tr -d '\n'
+  351  k delete -f rbac.yaml 
+  352  kgd
+  353  k delete -f deployment.yaml 
+  354  kgd
+  355  k create -f rbac.yaml 
+  356  k delete -f deployment.yaml 
+  357  k create -f deployment.yaml 
+  358  kgs
+  359  k delete -f service.yaml 
+  360  k create -f deployment.yaml 
+  361  kgp
+  362  k create -f  deployment.yaml 
+  363  k create -f service.yaml 
+  364  k create -f  deployment.yaml 
+  365  k create -f rbac.yaml 
+  366  kubectl get pods -n default
+  367  kgs
+  368  kgp
+  369  kgd
+  370  kubectl get service admission-controller -o yaml
+  371  kubectl get service admission-controller -o wide
+  372  k create -f  deployment.yaml 
+  373  docker build -t webhook:v1 .
+  374  cd  app/
+  375  docker build -t webhook:v1 .
+  376  cd ..
+  377  k create -f  deployment.yaml 
+  378  grep -rin "test.example.com" *
+  379  k delete -f webhook.yaml 
+  380  docker build -t webhook:v1 .
+  381  k create -f  deployment.yaml 
+  382  kgp
+  383  kgs
+  384  klogf pyhton
+  385  klogf python
+  386  history | grep "netshoot"
+  387  klogf python
+  388  kgs
+  389  kgp
+  390  k create -f webhook.yaml 
+  391  history | grep create
+  392  history | grep create | grep rb
+  393  kubectl get ServiceAccount | grep adm
+  394  k create -f  deployment_test.yaml 
+  395  #openssl req -x509 -newkey rsa:4096 -keyout tls.key -out tls.crt -days 365 -nodes -subj "/CN=admission-controller.default.svc"
+  396  gedit csr.conf
+  397  rm certs/*
+  398  rm app/tls.*
+  399  openssl req -new -sha256 -nodes -newkey rsa:2048 -keyout tls.key -out tls.csr -config csr.conf
+  400  cp  tls.* certs/
+  401  cp certs/*   app
+  402  ls
+  403  ls -altr
+  404  openssl x509 -req -sha256 -days 365 -in tls.csr -signkey tls.key -out tls.crt -extensions req_ext -extfile csr.conf
+  405  ls
+  406  ls -altr
+  407  rm app/tls.*
+  408  rm certs/*
+  409  ls app/
+  410  cp  tls.* certs/
+  411  cp certs/*   app
+  412  ls -altr app/
+  413  cat tls.crt | base64 | tr -d '\n'
+  414  docker build -t webhook:v1 .
+  415  cd app/
+  416  docker build -t webhook:v1 .
+  417  k delete -f deployment.yaml 
+  418  cd ..
+  419  k delete -f deployment.yaml 
+  420  #k create -f  deployment.yaml 
+  421  k delete -f webhook.yaml 
+  422  k create -f  deployment.yaml 
+  423  k create -f webhook.yaml 
+  424  klogf python
+  425  k create -f  deployment_test.yaml 
+  426  history | grep  delete
+  427  k delete -f rbac.yaml 
+  428  kgp
+  429  kgs
+  430  history | grep  create
+  431  cd app/
+  432  docker build -t webhook:v1 .
+  433  history | grep  create
+  434  k create -f  deployment.yaml
+  435  cd ..
+  436  k create -f  deployment.yaml
+  437  k create -f rbac.yaml
+  438  k create -f service.yaml
+  439  k create -f webhook.yaml
+  440  k create -f  deployment_test.yaml
+  441  grep -rin "test.example.com" *
+  442  klogf python
+  443  k delete -f deployment.yaml 
+  444  k delete -f webhook.yaml 
+  445  cd app/
+  446  docker build -t webhook:v1 .
+  447  k create -f  deployment.yaml
+  448  cd ..
+  449  k create -f  deployment.yaml
+  450  k create -f webhook.yaml
+  451  k create -f  deployment_test.yaml
+  452  grep -rin "admission-controller.default.svc" *
+  453  kgp -o wide
+  454  kubectl get ValidatingWebhookConfiguration validating-webhook -o yaml
+  455  grep -rin "admission-controller" *
+  456  ls -latr
+  457  rm tls.*
+  458  gs
+  459  cd ..
+  460  ls -latr | grep teach
+  461  ls teach_python/
+  462  rm -rf teach_python/
+  463  #git commit -m "initial commit"
+  464  ls -altr
+  465  mv kubernetes k8sLabs
+  466  cd k8sLabs/
+  467  ls -altr
+  468  gs
+  469  cd ..
+  470  mv k8sLabs/ KubernetesLabs
+  471  cd KubernetesLabs/
+  472  cd ..
+  473  ls -altr
+  474  mv KubernetesLabs/ kubernetes_labs/
+  475  cd kubernetes_labs/
+  476  pwd
+  477  ls -altr
+  478  pwd
+  479  gs
+  480  git commit -m "initial commit"
+  481  git init
+  482  git commit -m "one more initial commit"
+  483  vim .gitignore
+  484  ls -latr
+  485  gs
+  486  git add .
+  487  git commit -m "one more initial commit"
+  488  gs
+  489  git reset HEAD~1
+  490  пдд
+  491  gll
+  492  git reset HEAD~1
+  493  cd ..
+  494  cp kubernetes_labs/ kubernetes_labs_BAK
+  495  cp -r kubernetes_labs/ kubernetes_labs_BAK
+  496  cd kubernetes_labs
+  497  ls -altr
+  498  gs
+  499  gll
+  500  git update-ref -d HEAD
+  501  gs
+  502  git reset
+  503  gs
+  504  cat .gitignore 
+  505  vim  .gitignore 
+  506  gs
+  507  cd 3_5/
+  508  gs
+  509  cd ..
+  510  git add .
+  511  gs
+  512  ls -altr
+  513  gs
+  514  git remote add origin git@github.com:tier61wro/kubernetes_labs.git
+  515  gs
+  516  git pull origin master --allow-unrelated-histories
+  517  gs
+  518  gll
+  519  git commit -m "second and third part added"
+  520  gpuh 
+  521  kgp
+  522  klogf nginx-deployment
+  523  cd 3_5/
+  524  k run tmp-pod --rm -i -tty --image nicolaka/netshoot --/bin/bash
+  525  source ~/.bashrc
+  526  k create -f  deployment_test.yaml
+  527  cd 3_5/
+  528  k create -f  deployment_test.yaml
+  529  mkdir intro
+  530  mv  pod.yaml pod2.yaml intro/
+  531  gs
+  532  ls
+  533  gs
+  534  git add . 
+  535  git commit -m "update"
+  536  gs
+  537  g
+  538  gs
+  539  gpuh 
+  540  gp
+  541  git pull origin master
+  542  gs
+  543  ls -altr
+  544  gs
+  545  git add .
+  546  git commit -m "git ignore update"
+  547  gpuh 
+  548  ls -altr
+  549  vim TIPS
+  550  gs
+  551  git add .
+  552  git commit -m "update"
+  553  gpuh 
+  554  find . -name 
+  555  find . -name  "*his*"
+  556  mv ./3_1/kube_his ./3_1/kube.history
+  557  gs
+  558  git add .
+  559  git commit -m "small fix"
+  560  gpuh 
+  561  ls -altr
+  562  mkdir 4_1
+  563  cd 4_1/
+  564  ls -altr
+  565  touch  pod.yaml
+  566  mv pod.yaml pod_env_vars.yaml
+  567  kubectl create
+  568  kubectl create -f  pod_env_vars.yaml 
+  569  kgp
+  570  k remove pod python-admission-f69f5b58f-w9gt4
+  571  k delete pod python-admission-f69f5b58f-w9gt4
+  572  kgp
+  573  kubectl describe pod python-admission-f69f5b58f-jbgd5
+  574  kgr
+  575  k get replicaset
+  576  k delete python-admission-f69f5b58f
+  577  k delete replicaset  python-admission-f69f5b58f
+  578  kubectl exec envar-demo --printenv
+  579  kubectl exec envar-demo -- printenv
+  580  cat pod_env_vars.yaml 
+  581  kgp
+  582  #k delete 
+  583  k describe envar-demo
+  584  k describe pod  envar-demo
+  585  k delete  pod  envar-demo
+  586  touch cm_prod.yaml
+  587  k create -f cm_prod.yaml 
+  588  k describe configmaps demo-app-config
+  589  touch pod_cm.yaml
+  590  touch cm_test.yaml
+  591  #k create -f  cm_test.yaml -n test
+  592  k show configmaps
+  593  k get  configmaps
+  594  k create -f  cm_test.yaml -n test
+  595  k create namespace test
+  596  k get namespaces
+  597  k create -f  cm_test.yaml -n test
+  598  history tail
+  599  history |  tail
+  600  k get namespaces
+  601  #k describe configmap 
+  602  k get configmaps
+  603  k describe configmap demo-app-config
+  604  kgp
+  605  k describe python-admission-f69f5b58f-qdm4q
+  606  k describe pod  python-admission-f69f5b58f-qdm4q
+  607  k describe configmap demo-app-config
+  608  k describe configmap demo-app-config -n test
+  609  k create -f  pod_cm.yaml -n test
+  610  kgp
+  611  kgp -A
+  612  k describe pod python-admission-f69f5b58f-qdm4q
+  613  k delete replicaset python-admission-f69f5b58f
+  614  kgp
+  615  k describe pod python-admission-f69f5b58f-kxkr2
+  616  k delete replicaset python-admission-f69f5b58f
+  617  k get replicaset
+  618  k delete replicaset python-admission-f69f5b58f
+  619  k get replicaset
+  620  k describe python-admission-f69f5b58f 
+  621  k describe replicaset  python-admission-f69f5b58f 
+  622  k get replicaset
+  623  k get deployments
+  624  k delete deployment python-admission
+  625  k describe replicaset  python-admission-f69f5b58f 
+  626  k get replicaset
+  627  k get configmap
+  628  k get configmap -A
+  629  k get deployments
+  630  k get configmap -A
+  631  k create -f  pod_cm.yaml
+  632  k exec -ti demo-app -n test -- printenx | grep ".env"
+  633  k exec -ti demo-app -n test -- printenv | grep ".env"
+  634  k exec -ti demo-app -n test -- printenv | grep --color  ".env"
+  635  k get  configmaps
+  636  history
+  637  k exec -ti demo-app -n test -- printenv | grep ".env"
+  638  k exec -ti demo-app -n default -- printenv | grep ".env"
+  639  ls -altr
+  640  cd ..
+  641  ls
+  642  cd 4_1/
+  643  ls a-ltr
+  644  ls -altr
+  645  mkdir 1_Config_maps
+  646  mkdir 2_Secrets
+  647  mv  ../4_2/* .
+  648  ls a-ltr
+  649  ls -altr
+  650  mv  cm_prod.yaml pod_cm.yaml cm_test.yaml pod_env_vars.yaml 1_Config_maps/
+  651  ls -altr
+  652  ls
+  653  cd 2_Secrets/
+  654  ls -altr
+  655  cat username.txt 
+  656  cat password.txt 
+  657  mv node-hello-pod-secret.yaml sec.yaml
+  658  ls -latr
+  659  ls -altr
+  660  ls a-ltr
+  661  ls -altr
+  662  cat sec.yaml 
+  663  cat admin-secret.yaml 
+  664  mv sec.yaml sec2.yaml 
+  665  mv admin-secret.yaml sec.yaml 
+  666  ls a-ltr
+  667  ls -altr
+  668  cat sec.yaml
+  669  echo "YWRtaW4=" | base64 -di
+  670  k create -f sec.yaml 
+  671  k get secret
+  672  k describe secret mysecret
+  673  vim ~/.bashrc
+  674  tail ~/.bashrc
+  675  changeps\
+  676  changeps
+  677  source ~/.bashrc
+  678  changeps
+  679  vim ~/.bashrc
+  680  source ~/.bashrc
+  681  changeps
+  682  history | tail -n 20
+  683  k describe secret mysecret
+  684  #k create secret generic user-creds --form-file=./user 
+  685  ls a-ltr
+  686  ls -altr
+  687  #k create secret generic user-creds --form-file=./username.txt --from-file=./password.txt 
+  688  k create secret generic user-creds --form-file=./username.txt --from-file=./password.txt 
+  689  k create secret generic user-creds --from-file=./username.txt --from-file=./password.txt 
+  690  k get secret
+  691  k descrribe sercret user-creds
+  692  k describe sercret user-creds
+  693  k describe secret user-creds
+  694  k get secret
+  695  k describe secret mysecret
+  696  k describe secret user-creds
+  697  ls -altr
+  698  mv sec2.yaml  pod_sec.yaml
+  699  ls -altr
+  700  gs
+  701  ls -altr
+  702  gll
+  703  gs
+  704  kgp
+  705  #k create -f pod_sec.yaml 
+  706  k delete pod demo-app
+  707  k create -f pod_sec.yaml 
+  708  kgp
+  709  cat pod_sec.yaml 
+  710  kgp
+  711  cat pod_sec.yaml 
+  712  k exec -ti secret-pod -n default -- printenv | grep ".env"
+  713  k exec -ti secret-pod -n default -- printenv 
+  714  k exec -ti secret-pod -n default -- printenv  
+  715  k get pods -n kube-system
+  716  kubectl get pod coredns-5dd5756b68-tntpm
+  717  kubectl get pod coredns-5dd5756b68-tntpm -n kube-system
+  718  kubectl get pod coredns-5dd5756b68-tntpm -n kube-system -o json
+  719  kubectl get pod coredns-5dd5756b68-tntpm -n kube-system -o json > out
+  720  vim out 
+  721  kubectl get pod coredns-5dd5756b68-tntpm
+  722  kubectl get serviceaccount coredns
+  723  kubectl get serviceaccount coredns -n kube-system 
+  724  kubectl get serviceaccount coredns -n kube-system  -o json
+  725  kubectl get secrets -n kube-system  -o json
+  726  kubectl get serviceaccount coredns -n kube-system -o yaml
+  727  kubectl get serviceaccount coredns -n kube-system  -o json
+  728  kubectl get secrets -n kube-system  -o json
+  729  kubectl get pods
+  730  kubectl get pod tmp-pod -o out_json
+  731  kubectl get pod tmp-pod -n kube-system -o json
+  732  kubectl get pod tmp-pod  -o json
+  733  kubectl get serviceaccount default  -o json
+  734  kubectl get secrets -n kube-system
+  735  kubectl get secrets
+  736  kubectl get secret mysecret 
+  737  kubectl get secret mysecret -o json
+  738  kubectl get secret mysecret -o jsonpath password
+  739  kubectl get secret mysecret -o jsonpath='{.data.password}
+  740  # kubectl get secret mysecret -o jsonpath='{.data.password}
+  741  kubectl get secret mysecret -o jsonpath='{.data.password}
+  742  kubectl get secret mysecret -o jsonpath='{.data.password}'
+  743  kubectl get secret mysecret -o jsonpath='{.data.password}' | base64 -di
+  744  k config view
+  745  k config view | grep  server
+  746  curl -k  https://192.168.49.2:8443 
+  747  curl -k  https://192.168.49.2:8443/apiv1/services 
+  748  pwd
+  749  cd ..
+  750  ls a-ltr
+  751  ls -altr
+  752  cd ..
+  753  ls
+  754  cd 4_2/
+  755  ls
+  756  k create -f nginx-pod-sa.yaml 
+  757  kgp
+  758  kgp -n kube-system
+  759  k exec -ti nginx -n kube-system -- bash
+  760  kgp -n kube-system
+  761  k exec -ti nginx-pod -n kube-system -- bash
+  762  docker ps
+  763  minicube ssh
+  764  minikube ssh
+  765  history | tail
+  766  docker ps
+  767  minicube ssh
+  768  minikube ssh
+  769  docker ps
+  770  docker restart 6eb4a6dc8e84
+  771  docker ps
+  772  docker ps -a
+  773  docker ps -a | grep mini
+  774  docker ps -a
+  775  docker ps
+  776  minikube ssh
+  777  docker ps
+  778  minikube ssh
+  779  cd ../4_3/
+  780  ls -altr
+  781  curl -k -H "Authorization: Bearer some-token-shit"  https://192.168.49.2:8443/api/v1/namespaces/default/pods
+  782  ls -altr
+  783  cat pod-reader-role.yaml 
+  784  k create -f pod-reader-role.yaml 
+  785  ls -altr
+  786  cat pod-reader-binding-group.yaml
+  787  cat pod-reader-binding.yaml
+  788  k create -f pod-reader-binding.yaml 
+  789  k get RoleBinding
+  790  k remove RoleBinding read-pods
+  791  k delete RoleBinding read-pods
+  792  k get RoleBinding
+  793  k delete RoleBinding read-pods
+  794  k get RoleBinding
+  795  k create -f pod-reader-binding.yaml 
+  796  k get pods
+  797  k run nginx --image=nginx -n default
+  798  #k run nginx --image=nginx -n default
+  799  ls -altr
+  800  k create -f pod-reader-binding-group.yaml
+  801  curl -k -H "Authorization: Bearer some-token-shit2"  https://192.168.49.2:8443/api/v1/namespaces/default/pods
+  802  k get RoleBinding
+  803  k delete RoleBinding read-pods-group
+  804  k create -f pod-reader-binding-group.yaml
+  805  curl -k -H "Authorization: Bearer some-token-shit2"  https://192.168.49.2:8443/api/v1/namespaces/default/pods
+  806  curl -k -H "Authorization: Bearer some-token-shit"  https://192.168.49.2:8443/api/v1/namespaces/default/pods
+  807  curl -k -H "Authorization: Bearer some-token-shit2"  https://192.168.49.2:8443/api/v1/namespaces/default/pods
+  808  kubectl get rolebinding read-pods-group -n default -o yaml
+  809  kubectl get role pod-reader -n default -o yaml
+  810  curl -k -H "Authorization: Bearer some-token-shit2"  https://192.168.49.2:8443/api/v1/namespaces/default/pods
+  811  ls -altr
+  812  ls -altr | egrep(view|admin|)
+  813  ls -altr | egrep(view|admin)
+  814  ls -altr | egrep("view|admin")
+  815  ls -altr | egrep"view|admin"
+  816  ls -altr | egrep "view|admin"
+  817  ls -altr | egrep "vie|admin"
+  818  ls -altr | egrep "view"
+  819  k get clusterroles
+  820  k get clusterroles | egrep "admin|view"
+  821  curl -k -H "Authorization: Bearer some-token-shit2"  https://192.168.49.2:8443/api/v1/namespaces/default/pods
+  822  curl -k -H "Authorization: Bearer some-token-shit2"  https://192.168.49.2:8443/api/v1/namespaces/kube-system/pods
+  823  k create -f cluster-admin-binding.yaml 
+  824  curl -k -H "Authorization: Bearer some-token-shit2"  https://192.168.49.2:8443/api/v1/namespaces/kube-system/pods
+  825  k auth can-i get pods -n default -as user1
+  826  k auth can-i get pods -n default --as user1
+  827  k auth can-i get pods -n default --as user2
+  828  k auth can-i get secrets -n default --as user2
+  829  k auth can-i get secrets -n default --as user1
+  830  k config view
+  831  cat /home/tier/.minikube/profiles/minikube/client.crt -text -noout
+  832  openssl x509 /home/tier/.minikube/profiles/minikube/client.crt -text -noout
+  833  openssl x509 -in /home/tier/.minikube/profiles/minikube/client.crt -text -noout
+  834  k config get-contexts
+  835  k config set-context default-pod-reader --cluster=minicube --user=user1
+  836  cat ~/.kube/config
+  837  k config ssl-credentials user1 --token=some-token-shit2
+  838  k config set-credentials user1 --token=some-token-shit2
+  839  cat ~/.kube/config
+  840  k config get-contexts
+  841  k config use-context default-pod-reader
+  842  k config get-contexts
+  843  k config use-context default-pod-reader
+  844  k config get-contexts
+  845  k auth can-i get secrets -n default --as user1
+  846  k get pods -A
+  847  cat ~/.kube/config 
+  848  cat ~/.kube/config  | tail
+  849  cat ~/.kube/config  | tail -n 4
+  850  cat ~/.kube/config  | tail -n 3
+  851  docker run --network=host nginx
+  852  minicube ssh
+  853  minikube ssh
+  854  cd ../4_4/
+  855  ls -altr
+  856  grep  "hack" *
+  857  k create -f pod-creator-role.yaml
+  858  k create -f pod-creator-role.yaml -f pod-creator-binding.yaml 
+  859  k config get-contexts
+  860  k create -f pod-creator-role.yaml -f pod-creator-binding.yaml 
+  861  k get roles
+  862  k describe pod-creator
+  863  k describe role  pod-creator
+  864  k config  use-context minicube
+  865  k config get-contexts
+  866  k config  use-context minikube
+  867  k run nginx --image=nginx -n kube-system --as=user1 
+  868  k run nginx --image=nginx -n default --as=user1 
+  869  k run nginx --image=nginx2 -n default --as=user1 
+  870  k run nginx2 --image=nginx -n default --as=user1 
+  871  ls -altr
+  872  k create -f pod-nginx-hack.yaml
+  873  k exec -ti ngi
+  874  kgp
+  875  #k exec -ti
+  876  kgp
+  877  k logs nginx-hack
+  878  klogf nginx-hack
+  879  kgp
+  880  k config get-contexts
+  881  k config  use-context default-pod-reader
+  882  k config get-contexts
+  883  k config  use-context minikube
+  884  kgp
+  885  k describe pod nginx-hack
+  886  k exec -ti nxinx-hack -n default --bash
+  887  k exec -ti nxinx-hack -n default -- bash
+  888  k exec -ti nginx-hack -n default -- bash
+  889  ls -altr
+  890  k get psp
+  891  minikube stop
+  892  minikube start --extra-config=apiserver.enable-admission-plugins=PodSecurityPolicy --addons=pod-security-policy
+  893  #minikube start --extra-config=apiserver.enable-admission-plugins=PodSecurityPolicy --addons=pod-security-policy
+  894  minikube status
+  895  minikube stop
+  896  minikube start
+  897  minikube config unset apiserver.enable-admission-plugins
+  898  minikube start
+  899  minikube addons disable pod-security-policy
+  900  minikube start
+  901  minikube stop
+  902  minikube start
+  903  minikube stop
+  904  minikube delete
+  905  minikube start
+  906  kubestl get psp
+  907  k get psp
+  908  ls -latr
+  909  touch psp-restricted.yaml
+  910  touch psp-privileged.yaml
+  911  ls -latr
+  912  k create -f psp-restricted.yaml
+  913  kubectl apply -f unprivileged-psp.yaml
+  914  kubectl apply -f psp-privileged.yaml 
+  915  rm psp-*
+  916  ls -altr
+  917  gs
+  918  ls -altr
+  919  cd ..
+  920  ls -altr
+  921  gs
+  922  kubectl get namespaces
+  923  kubectl config current-context
+  924  kubectl config view --minify | grep namespace:
+  925  kubectl config view --minify | grep -С 2  namespace:
+  926  kubectl config view --minify | grep -C 2  namespace:
+  927  ls -altr
+  928  cd 4_4/
+  929  ls -latr
+  930  touch psa-default-namespace.yaml
+  931  ls -altr
+  932  kubectl apply -f psa-default-namespace.yaml
+  933  kubectl get namespace default --show-labels
+  934  kubectl apply -f restricted-pod.yaml
+  935  k get pods
+  936  kubectl apply -f restricted-pod.yaml
+  937  k get pods
+  938  k get pods --show-label
+  939  k get pods --showlabel
+  940  k get pods
+  941  kubectl describe pod restricted-example
+  942  k get pods
+  943  k delete -f restricted-pod.yaml 
+  944  kubectl apply -f restricted-pod.yaml
+  945  k get pods
+  946  kubectl describe pod restricted-example
+  947  k get pods
+  948  k delete -f restricted-pod.yaml 
+  949  k get pods
+  950  kubectl apply -f restricted-pod.yaml
+  951  k get pods
+  952  kubectl describe pod restricted-example
+  953  kubectl logs restricted-example -c non-privileged-container --previous
+  954  k delete -f restricted-pod.yaml 
+  955  kubectl apply -f restricted-pod.yaml
+  956  k get pods
+  957  k delete pod restricted-example
+  958  kubectl apply -f restricted-pod.yaml
+  959  k get pods
+  960  kubectl describe pod restricted-example
+  961  kubectl describe pod python-restricted-example
+  962  k delete pod restricted-example
+  963  k get pods
+  964  k delete pod python-restricted-example
+  965  kubectl apply -f restricted-pod.yaml
+  966  k get pods
+  967  kubectl apply -f psa-default-namespace.yaml
+  968  kubectl apply -f restricted-pod.yaml
+  969  k get pods
+  970  c
+  971  cd ..
+  972  gs
+  973  git add .
+  974  gs
+  975  git add .
+  976  git commit -m "4 chapter update"
+  977  gpuh 
+  978  ls -altr
+  979  gs
+  980  ls -latr
+  981  minikube start --cni=bridge
+  982  k get nodes
+  983  minikube stop
+  984  minikube start --cni=bridge
+  985  k run nginx --image=nginx
+  986  k get psa
+  987  k get pss
+  988  k get psp
+  989  k get namespace
+  990  kubectl  config view | grep namespace
+  991  k label default pod-security.kubernetes.io/warn-
+  992  k label namespace default pod-security.kubernetes.io/warn-
+  993  k run nginx --image=nginx
+  994  minicube docker ps
+  995  minikube docker ps
+  996  k show nodes
+  997  k get nodes
+  998  minikube ssh -n minikube
+  999  minicube delete
+ 1000  minikube delete
+ 1001  ls -altr
+ 1002  cd 5_4/
+ 1003  ls a-ltr
+ 1004  ls -latr
+ 1005  minicube addons enable ingress
+ 1006  minikube addons enable ingress
+ 1007  minikube status
+ 1008  minikube start
+ 1009  minikube addons enable ingress
+ 1010  k run nginx --image nginx --labels="app=app"
+ 1011  k expose pod nginx --port 80 --target-port 80
+ 1012  kgp
+ 1013  k get service
+ 1014  ls
+ 1015  k create -f ing.yaml 
+ 1016  k describe ingress my-app
+ 1017  k run apache --image httpd --labels="app=app-apache"
+ 1018  #k expose pod apache --port 80 --target-port 80
+ 1019  kgp
+ 1020  k expose pod apache --port 80 --target-port 80
+ 1021  k describe service apache
+ 1022  k describe service nginx
+ 1023  k describe ingress my-app
+ 1024  k edit ingress my-app
+ 1025  ls
+ 1026  kgp
+ 1027  k describe ingress my-app
+ 1028  k get service
+ 1029  k describe service nginx
+ 1030  history  > his
