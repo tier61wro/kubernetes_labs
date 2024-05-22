@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "billing.fullname" . }}
+  labels:
+    {{- include "billing.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "billing.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "billing.selectorLabels" . | nindent 8 }}
+    spec:
+      initContainers:
+        - name: check-db-ready
+          image: postgres:9.6
+          command: [ 'sh', '-c',
+              'until pg_isready -h postgres -p 5432;
+          do echo database is not ready; sleep 2; done;' ]
+      containers:
+        - name:  billing
+          image: {{ .Values.image.name }}:{{ .Values.image.tag }}
+          env:
+            {{- with .Values.envs }}
+            {{- toYaml . | nindent 10 }}
+            {{- end }}
+          resources:
+            requests:
+              memory: "1Gi"
+              cpu: "500m"
+            limits:
+              memory: "2Gi"
+              cpu: "1"

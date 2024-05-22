@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-pvc
+spec:
+  containers:
+    - name: web-server
+      image: nginx
+      volumeMounts:
+        - name: cache-volume
+          mountPath: /cache
+
+  volumes:
+    - name: cache-volume
+      persistentVolumeClaim:
+        claimName: pvc-slow

@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: volumes-pod-2
+spec:
+  containers:
+    - name: volumes-pod-2
+      image: debian
+      command: [ "/bin/sh" ]
+      args: [ "-c", "sleep 3600" ]
+      volumeMounts:
+        - name: slow-persistent-volume
+          mountPath: /mnt/slow-persistent
+        - name: fast-ephemeral-volume
+          mountPath: /mnt/fast-ephemeral
+  volumes:
+    - name: slow-persistent-volume
+      hostPath:
+        path: "/mnt/hostpath"
+    - name: fast-ephemeral-volume
+      emptyDir: {
+        medium: Memory, # оперативную память для emptyDir тома
+        sizeLimit: "100Mi" # для ограничения использования памяти
+      }

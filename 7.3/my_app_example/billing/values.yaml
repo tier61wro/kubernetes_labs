@@ -1,0 +1,23 @@
+replicaCount: 1
+
+image:
+  name: billing
+  tag: v1.0
+
+envs:
+  - name: DEBUG
+    value: "true"
+  - name: DATABASE_URL
+    value: postgresql://user:password@postgres/db
+
+service:
+  port: 8080
+
+postgresql:
+  global:
+    postgresql:
+      auth:
+        database: db
+        username: user
+        password: password
+  fullnameOverride: postgres

@@ -1,0 +1,42 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: billing
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: billing
+  template:
+    metadata:
+      labels:
+        app: billing
+    spec:
+      initContainers:
+        - name: check-db-ready
+          image: postgres:9.6
+          command: [ 'sh', '-c',
+              'until pg_isready -h postgres -p 5432;
+          do echo database is not ready; sleep 2; done;' ]
+      containers:
+        - name:  billing
+          image: billing:v1.0
+          env:
+            - name: DEBUG
+              value: "True"
+            - name: DATABASE_URL
+              value: postgresql://user:password@postgres/db
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: billing
+spec:
+  selector:
+    app: billing
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080

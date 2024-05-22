@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: two-containers
+  labels:
+    app: web-server
+spec:
+  restartPolicy: Never
+
+  # Объявление списка томов, используемых в поде
+  volumes:
+    - name: shared-data         # Имя тома
+      emptyDir: { }             # Тип тома emptyDir, создает временный том, который существует пока существует под
+
+  containers:
+    - name: first-container
+      image: nginx
+      # Монтирование тома в контейнер
+      volumeMounts:
+        - name: shared-data     # Ссылка на объявленный ранее том
+          mountPath: /usr/share/nginx/html  # Путь, по которому том будет доступен в контейнере, используется Nginx для отдачи файлов
+
+    - name: second-container
+      image: debian
+      # Монтирование тома в контейнер
+      volumeMounts:
+        - name: shared-data     # Ссылка на объявленный ранее том
+          mountPath: /pod-data  # Путь, по которому том будет доступен в контейнере
+      command: [ "/bin/sh" ]
+      args: [ "-c", "while true;do date > /pod-data/index.html 2>&1 ;sleep 2;done" ]
+      # Команда и аргументы, запускающие бесконечный цикл, который записывает текущее время в файл index.html каждые 2 секунды

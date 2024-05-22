@@ -1,0 +1,12 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass # использование провайдера, который обрабатывает запросы на создание хранилища
+metadata:
+  name: aws-ebs
+provisioner: kubernetes.io/aws-ebs
+parameters:
+  type: io1 # тип хранилища в io1 (производительное SSD-хранилище).
+  iopsPerGB: "1" # количество операций ввода-вывода в секунду (IOPS) на гигабайт хранилища.
+  fsType: ext4 # тип файловой системы для созданного хранилища (ext4 в данном случае).
+reclaimPolicy: Retain # хранилище не будет автоматически удалено при удалении PersistentVolumeClaim.
+allowVolumeExpansion: true # расширение PersistentVolume для этого StorageClass.
+volumeBindingMode: Immediate # привязка PV будет выполняться немедленно при создании PVC, а не ожидать доступного PV
