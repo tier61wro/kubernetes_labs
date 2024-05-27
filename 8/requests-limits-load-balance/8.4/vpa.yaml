@@ -1,0 +1,16 @@
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: server-vpa
+spec:
+  targetRef:
+    apiVersion: "apps/v1"
+    kind: "Deployment" # Deployment/StatefulSet/DeamonSet/CronJob
+    name: "server"
+  updatePolicy:
+    # off/initial/recreate/auto
+    updateMode: "Auto"
+    # off - VPA не устанавливает requests, рекомендательный режим (PROD вариант)
+    # initial - VPA устанавливает requests только при создании пода
+    # recreate - VPA устанавливает requests и обновляет их для сущ-их подов пересоздавая их
+    # auto - старается обновлять requests без пересоздания подов (бета)
