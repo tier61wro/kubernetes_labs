@@ -1,0 +1,11 @@
+spec:
+  template:
+    spec:
+      containers:
+        - name: server
+          resources:
+            requests:
+              cpu: 500m
+            limits:
+              cpu: "4"
+              

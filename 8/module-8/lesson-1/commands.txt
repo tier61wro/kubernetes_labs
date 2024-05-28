@@ -1,0 +1,3 @@
+kubectl get pods -o=jsonpath='{range .items[*]}{.metadata.name}{"\t"}{.status.qosClass}{"\n"}{end}'
+
+docker stats `docker ps | grep cassandra  | grep -v pause | awk '{print $1}' | xargs`

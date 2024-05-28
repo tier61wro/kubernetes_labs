@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-high-priority
+  labels:
+    app: nginx-high-priority
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-high-priority
+  template:
+    metadata:
+      labels:
+        app: nginx-high-priority
+    spec:
+      priorityClassName: high-priority
+      nodeSelector:
+        kubernetes.io/hostname: minikube-m02
+      containers:
+        - name: nginx-high-priority
+          image: nginx
+          resources:
+            requests:
+              memory: "200Mi"          

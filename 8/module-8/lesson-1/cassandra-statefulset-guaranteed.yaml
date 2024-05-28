@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: cassandra-guaranteed
+  labels:
+    app: cassandra-guaranteed
+spec:
+  serviceName: cassandra-guaranteed
+  replicas: 2
+  selector:
+    matchLabels:
+      app: cassandra-guaranteed
+  template:
+    metadata:
+      labels:
+        app: cassandra-guaranteed
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: minikube-m02
+      containers:
+        - name: cassandra-guaranteed
+          image: gcr.io/google-samples/cassandra:v13
+          imagePullPolicy: Always
+          resources:
+            requests:
+              memory: "1024Mi"
+              cpu: "250m"
+            limits:
+              memory: "1024Mi"
+              cpu: "250m"
+          env:
+            - name: MAX_HEAP_SIZE
+              value: 512M
+            - name: HEAP_NEWSIZE
+              value: 100M
+            - name: CASSANDRA_SEEDS
+              value: "cassandra-guaranteed-0.cassandra-guaranteed.default.svc.cluster.local"
+            - name: CASSANDRA_CLUSTER_NAME
+              value: "K8Demo"
+            - name: CASSANDRA_DC
+              value: "DC1-K8Demo"
+            - name: CASSANDRA_RACK
+              value: "Rack1-K8Demo"
+          volumeMounts:
+            - name: cassandra-data-guaranteed
+              mountPath: /cassandra_data
+  volumeClaimTemplates:
+    - metadata:
+        name: cassandra-data-guaranteed
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        resources:
+          requests:
+            storage: 1Gi
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: cassandra-guaranteed
+  name: cassandra-guaranteed
+spec:
+  clusterIP: None
+  ports:
+    - port: 9042
+  selector:
+    app: cassandra-guaranteed

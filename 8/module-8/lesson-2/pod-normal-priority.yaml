@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-normal-priority
+  labels:
+    app: nginx-normal-priority
+spec:
+  replicas: 20
+  selector:
+    matchLabels:
+      app: nginx-normal-priority
+  template:
+    metadata:
+      labels:
+        app: nginx-normal-priority
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: minikube-m02
+      containers:
+        - name: nginx-normal-priority
+          image: nginx
+          resources:
+            requests:
+              memory: "200Mi"

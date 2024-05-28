@@ -1,0 +1,5 @@
+wget https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+
+curl -s http://localhost:8080/apis/metrics.k8s.io/v1beta1/pods
+
+kubectl create pdb pdbdemo --min-available 2 --selector "app=nginx"

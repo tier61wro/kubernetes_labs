@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-quota
+  labels:
+    app: nginx-quota
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: nginx-quota
+  template:
+    metadata:
+      labels:
+        app: nginx-quota
+    spec:
+      priorityClassName: "low-priority"
+      nodeSelector:
+        kubernetes.io/hostname: minikube-m02
+      containers:
+        - name: nginx-quota
+          image: nginx
+          resources:
+            requests:
+              memory: 100M
+              cpu: 200m
+            limits:
+              cpu: 300m

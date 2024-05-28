@@ -1,0 +1,7 @@
+kubectl run tmp-pod --rm -i --tty --image nicolaka/netshoot -- /bin/bash
+
+ab -t 300 -c 10 http://server:8080/pi?length=100
+
+git clone https://github.com/kubernetes/autoscaler.git
+
+kubectl get vpa server-vpa -o json -w | jq  '.status.recommendation'
