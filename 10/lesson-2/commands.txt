@@ -1,0 +1,4 @@
+curl -L https://istio.io/downloadIstio | sh -
+
+Статья про Линуксовые неймспейсы:
+https://blog.quarkslab.com/digging-into-linux-namespaces-part-1.html

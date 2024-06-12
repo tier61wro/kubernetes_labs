@@ -1,0 +1,28 @@
+apiVersion: v1
+data:
+  alertmanager.yaml: |
+    global:
+      resolve_timeout: 1m
+      slack_api_rul: 'https://hooks.slack.com/services/your/slack/webhook/url'
+    receivers:
+    - name: 'slack-notifications'
+      slack_configs:
+        - channel: '#notifications'
+          send_resolved: true
+    route:
+      receiver: 'slack-notifications'
+
+kind: ConfigMap
+metadata:
+  annotations:
+    meta.helm.sh/release-name: prom
+    meta.helm.sh/release-namespace: monitoring
+  labels:
+    app: prometheus
+    app.kubernetes.io/managed-by: Helm
+    chart: prometheus-15.0.1
+    component: alertmanager
+    heritage: Helm
+    release: prom
+  name: prom-prometheus-alertmanager
+  namespace: monitoring

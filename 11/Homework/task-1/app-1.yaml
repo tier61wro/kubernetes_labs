@@ -1,0 +1,39 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: time-server-t1
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: time-server-t1
+  template:
+    metadata:
+      labels:
+        app: time-server-t1
+    spec:
+      terminationGracePeriodSeconds: 0
+      containers:
+        - name: time-server-t1
+          image: server:t1
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 3
+            periodSeconds: 3
+            failureThreshold: 1
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: time-server-t1
+spec:
+  selector:
+    app: time-server-t1
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080

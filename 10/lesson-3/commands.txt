@@ -1,0 +1,8 @@
+Метка на неймспейс для автоматического инжека прокси-сайдкаров:
+kubectl label namespaces default istio-injection=enabled
+
+Демо приложение, запускается из папки с istio:
+kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml
+
+tls режимы:
+https://istio.io/latest/docs/reference/config/networking/destination-rule/#ClientTLSSettings-TLSmode

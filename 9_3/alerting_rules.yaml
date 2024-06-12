@@ -1,0 +1,11 @@
+groups:
+  - name: prometheus-apps
+    rules:
+      - alert: NoPushGatewayDown
+        expr: up{job="prometheus-pushgateway"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Prometheus Pushgateway is down"
+          description: "Prometheus Pushgateway is down"
